@@ -1,3 +1,5 @@
+import { StyleSheet } from 'react-native';
+
 export const combinedOptions = (defaultConfigs, configs) => {
   let themeConfigs = {
     light: { ...defaultConfigs.light },
@@ -13,4 +15,13 @@ export const combinedOptions = (defaultConfigs, configs) => {
     }
   }
   return themeConfigs;
+};
+
+export const buildTheme = (themeValue) => {
+  let styles = {};
+
+  styles.primary = { color: themeValue['primary-color'] };
+
+  console.log(themeValue);
+  return StyleSheet.create(styles);
 };

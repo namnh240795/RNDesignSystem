@@ -24,7 +24,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { ThemeProvider } from './src/core/ThemeProvider';
-import Typography from './src/components/Typography';
+import Typography from './src/core/components/Typography';
 
 // const Button1 = () => {
 //   const theme = useTheme(ThemeContext);
@@ -43,7 +43,7 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          <Typography />
+          <Typography>Primary style testing</Typography>
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>

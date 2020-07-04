@@ -1,7 +1,7 @@
 import React, { useMemo, useReducer, useCallback } from 'react';
 import light from './configs/light';
 import dark from './configs/dark';
-import { combinedOptions } from './utils';
+import { combinedOptions, buildTheme } from './utils';
 
 const defaultConfigs = { light, dark };
 
@@ -27,7 +27,8 @@ export const ThemeProvider = ({
   const themeConfigs = combinedOptions(defaultConfigs, configs);
 
   const [theme, dispatch] = useReducer(reducer, {
-    value: themeConfigs[defaultTheme] || themeConfigs.light,
+    value:
+      buildTheme(themeConfigs[defaultTheme]) || buildTheme(themeConfigs.light),
     type: defaultTheme || 'light',
   });
 
@@ -36,7 +37,7 @@ export const ThemeProvider = ({
       dispatch({
         type: 'toggle',
         payload: {
-          value: themeConfigs.dark,
+          value: buildTheme(themeConfigs.dark),
           type: 'dark',
         },
       });
@@ -44,7 +45,7 @@ export const ThemeProvider = ({
       dispatch({
         type: 'toggle',
         payload: {
-          value: themeConfigs.light,
+          value: buildTheme(themeConfigs.light),
           type: 'light',
         },
       });

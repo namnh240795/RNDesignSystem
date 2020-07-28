@@ -24,26 +24,20 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { ThemeProvider } from './src/core/ThemeProvider';
-import Typography from './src/core/components/Typography';
-
-// const Button1 = () => {
-//   const theme = useTheme(ThemeContext);
-//   console.log('theme', theme);
-//   return null;
-// };
+// import useTheme from './src/core/useTheme';
 
 const App = () => {
+  // const { typography } = useTheme();
+
   return (
-    <ThemeProvider
-      defaultTheme="dark"
-      configs={{ dark: { 'primary-color': 'red' } }}>
+    <ThemeProvider defaultTheme="dark">
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          <Typography>Primary style testing</Typography>
+          {/* <Text style={typography('h1')}>Primary style testing</Text> */}
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>

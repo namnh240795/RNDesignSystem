@@ -18,7 +18,7 @@ export const ThemeContext = React.createContext();
 
 export const ThemeProvider = ({
   children,
-  defaultTheme = 'light',
+  defaultTheme = 'dark',
   configs = {
     light: {},
     dark: {},
@@ -26,11 +26,15 @@ export const ThemeProvider = ({
 }) => {
   const themeConfigs = combinedOptions(defaultConfigs, configs);
 
+  console.log('themeConfigs', themeConfigs);
+
   const [theme, dispatch] = useReducer(reducer, {
     value:
       buildTheme(themeConfigs[defaultTheme]) || buildTheme(themeConfigs.light),
     type: defaultTheme || 'light',
   });
+
+  console.log('theme', theme);
 
   const toggle = useCallback(() => {
     if (theme.type === 'light') {

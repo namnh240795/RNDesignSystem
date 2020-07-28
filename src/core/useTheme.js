@@ -19,14 +19,7 @@ const useTheme = () => {
 
   const typography = useCallback((key) => theme.value.typography[key], [theme]);
 
-  const layout = useCallback(
-    (key) => {
-      theme.value.layout[key];
-    },
-    [theme],
-  );
-
-  return { theme, backgroundColor, color, typography, borderColor, layout };
+  return { theme, backgroundColor, color, typography, borderColor };
 };
 
 export default useTheme;

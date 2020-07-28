@@ -67,10 +67,32 @@ const mapColor = (value) => {
   return style;
 };
 
-// const mapSpacing = (base) => {
-// console.log('base', base);
-// const margin
-// };
+const mapSpacing = (base) => {
+  let spacings = {};
+  for (let i = 0; i <= 20; i++) {
+    const value = base * i;
+    spacings = {
+      ...spacings,
+      ...StyleSheet.create({
+        [`ma-${value}`]: { margin: value },
+        [`mh-${value}`]: { marginHorizontal: value },
+        [`mv-${value}`]: { marginVertical: value },
+        [`mt-${value}`]: { marginTop: value },
+        [`mb-${value}`]: { marginBottom: value },
+        [`ml-${value}`]: { marginLeft: value },
+        [`mr-${value}`]: { marginRight: value },
+        [`pa-${value}`]: { padding: value },
+        [`ph-${value}`]: { paddingHorizontal: value },
+        [`pv-${value}`]: { paddingVertical: value },
+        [`pt-${value}`]: { paddingTop: value },
+        [`pb-${value}`]: { paddingBottom: value },
+        [`pl-${value}`]: { paddingLeft: value },
+        [`pr-${value}`]: { paddingRight: value },
+      }),
+    };
+  }
+  return spacings;
+};
 
 export const buildTheme = (themeValue) => {
   let styles = {};
@@ -100,7 +122,7 @@ export const buildTheme = (themeValue) => {
   const themeBorderColors = colors.borderColors;
 
   // spacing
-  // const themeSpacing = mapSpacing(themeValue['base-spacing']);
+  const themeSpacings = mapSpacing(themeValue['base-spacing']);
 
   // combined styles
   styles = {
@@ -108,6 +130,7 @@ export const buildTheme = (themeValue) => {
     borderColors: themeBorderColors,
     backgroundColors: themeBackgroundColors,
     typography: themeTypos,
+    spacings: themeSpacings,
   };
 
   return styles;
